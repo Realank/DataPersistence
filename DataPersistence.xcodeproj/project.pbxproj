@@ -15,6 +15,7 @@
 		8C45640C1CD9DC7100F7DF1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C45640A1CD9DC7100F7DF1A /* LaunchScreen.storyboard */; };
 		8C4564171CD9DC7100F7DF1A /* DataPersistenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564161CD9DC7100F7DF1A /* DataPersistenceTests.m */; };
 		8C4564221CD9DC7100F7DF1A /* DataPersistenceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564211CD9DC7100F7DF1A /* DataPersistenceUITests.m */; };
+		8C4564311CD9DD7B00F7DF1A /* RACFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		8C45641D1CD9DC7100F7DF1A /* DataPersistenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataPersistenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C4564211CD9DC7100F7DF1A /* DataPersistenceUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataPersistenceUITests.m; sourceTree = "<group>"; };
 		8C4564231CD9DC7100F7DF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C45642F1CD9DD7B00F7DF1A /* RACFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACFileManager.h; sourceTree = "<group>"; };
+		8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				8C4564001CD9DC7100F7DF1A /* AppDelegate.m */,
 				8C4564021CD9DC7100F7DF1A /* ViewController.h */,
 				8C4564031CD9DC7100F7DF1A /* ViewController.m */,
+				8C45642F1CD9DD7B00F7DF1A /* RACFileManager.h */,
+				8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */,
 				8C4564051CD9DC7100F7DF1A /* Main.storyboard */,
 				8C4564081CD9DC7100F7DF1A /* Assets.xcassets */,
 				8C45640A1CD9DC7100F7DF1A /* LaunchScreen.storyboard */,
@@ -270,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C4564311CD9DD7B00F7DF1A /* RACFileManager.m in Sources */,
 				8C4564041CD9DC7100F7DF1A /* ViewController.m in Sources */,
 				8C4564011CD9DC7100F7DF1A /* AppDelegate.m in Sources */,
 				8C4563FE1CD9DC7100F7DF1A /* main.m in Sources */,
@@ -364,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -402,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
