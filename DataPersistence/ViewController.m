@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self fileManagement];
 
 }
 
@@ -82,6 +81,19 @@
         NSLog(@"删除%@失败",directoryName);
     }
     
+}
+
+- (void)preferenceManagement{
+    //添加preference
+    [[NSUserDefaults standardUserDefaults] setObject:@"value1" forKey:@"key1"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"value2" forKey:@"key2"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    //删除preference
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"key1 "];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    //删除所有preference
+    NSString *appDomainStr = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomainStr];
 }
 
 
