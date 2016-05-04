@@ -66,6 +66,22 @@
     
     content = [RACFileManager readFileInPath:filePath];
     NSLog(@"%@",content);
+    
+    BOOL deleteResult = [RACFileManager deleteFileInPath:filePath];
+    if (deleteResult) {
+        NSLog(@"删除%@成功",fileName);
+    }else {
+        NSLog(@"删除%@失败",fileName);
+    }
+    
+    NSString *directoryPath = [cachePath stringByAppendingPathComponent:directoryName];
+    deleteResult = [RACFileManager deleteFileInPath:directoryPath];
+    if (deleteResult) {
+        NSLog(@"删除%@成功",directoryName);
+    }else {
+        NSLog(@"删除%@失败",directoryName);
+    }
+    
 }
 
 
