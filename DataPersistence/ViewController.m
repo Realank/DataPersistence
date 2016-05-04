@@ -18,7 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    [self fileManagement];
+
+}
+
+- (void)fileManagement{
     NSLog(@"home directory:%@",[RACFileManager homeDirectory]);
     
     NSLog(@"document directory:%@",[RACFileManager documentDirectory]);
@@ -62,9 +66,6 @@
     
     content = [RACFileManager readFileInPath:filePath];
     NSLog(@"%@",content);
-
-    
-    
 }
 
 
