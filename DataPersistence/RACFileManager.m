@@ -10,6 +10,7 @@
 
 @implementation RACFileManager
 
+//获取沙盒根目录
 +(NSString*)homeDirectory{
     
     return NSHomeDirectory();
