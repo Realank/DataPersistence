@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RACFileManager.h"
+#import "RACCodingDemo.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self archiveObject];
+    [self unArchiveObject];
+}
 
+
+- (void)archiveObject{
+    
+    RACCodingDemo *demoObj = [[RACCodingDemo alloc] init];
+    
+    NSString* cachePath = [RACFileManager cacheDirectory];
+    NSString* fileName = @"demoObj.data";
+    NSString* filePath = [cachePath stringByAppendingPathComponent:fileName];
+    
+    [NSKeyedArchiver archiveRootObject:demoObj toFile:filePath];
+    NSData *objectData = [NSKeyedArchiver archivedDataWithRootObject:demoObj];
+    
+    //Class Object <-> NSData
+    demoObj = [NSKeyedUnarchiver unarchiveObjectWithData:objectData];
+    NSLog(@"%@ %ld",demoObj.name,(long)demoObj.age);
+
+}
+
+- (void)unArchiveObject{
+    NSString* cachePath = [RACFileManager cacheDirectory];
+    NSString* fileName = @"demoObj.data";
+    NSString* filePath = [cachePath stringByAppendingPathComponent:fileName];
+    
+    RACCodingDemo *demoObj = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    NSLog(@"%@ %ld",demoObj.name,(long)demoObj.age);
 }
 
 - (void)fileManagement{

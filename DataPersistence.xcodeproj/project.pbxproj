@@ -16,6 +16,7 @@
 		8C4564171CD9DC7100F7DF1A /* DataPersistenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564161CD9DC7100F7DF1A /* DataPersistenceTests.m */; };
 		8C4564221CD9DC7100F7DF1A /* DataPersistenceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564211CD9DC7100F7DF1A /* DataPersistenceUITests.m */; };
 		8C4564311CD9DD7B00F7DF1A /* RACFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */; };
+		8CE03BE81CDB18B40067DB98 /* RACCodingDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03BE71CDB18B40067DB98 /* RACCodingDemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		8C4564231CD9DC7100F7DF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C45642F1CD9DD7B00F7DF1A /* RACFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACFileManager.h; sourceTree = "<group>"; };
 		8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACFileManager.m; sourceTree = "<group>"; };
+		8CE03BE61CDB18B40067DB98 /* RACCodingDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACCodingDemo.h; sourceTree = "<group>"; };
+		8CE03BE71CDB18B40067DB98 /* RACCodingDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACCodingDemo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				8C4564001CD9DC7100F7DF1A /* AppDelegate.m */,
 				8C4564021CD9DC7100F7DF1A /* ViewController.h */,
 				8C4564031CD9DC7100F7DF1A /* ViewController.m */,
+				8CE03BE61CDB18B40067DB98 /* RACCodingDemo.h */,
+				8CE03BE71CDB18B40067DB98 /* RACCodingDemo.m */,
 				8C45642F1CD9DD7B00F7DF1A /* RACFileManager.h */,
 				8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */,
 				8C4564051CD9DC7100F7DF1A /* Main.storyboard */,
@@ -278,6 +283,7 @@
 				8C4564311CD9DD7B00F7DF1A /* RACFileManager.m in Sources */,
 				8C4564041CD9DC7100F7DF1A /* ViewController.m in Sources */,
 				8C4564011CD9DC7100F7DF1A /* AppDelegate.m in Sources */,
+				8CE03BE81CDB18B40067DB98 /* RACCodingDemo.m in Sources */,
 				8C4563FE1CD9DC7100F7DF1A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +508,7 @@
 				8C4564281CD9DC7100F7DF1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C4564291CD9DC7100F7DF1A /* Build configuration list for PBXNativeTarget "DataPersistenceTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +517,7 @@
 				8C45642B1CD9DC7100F7DF1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C45642C1CD9DC7100F7DF1A /* Build configuration list for PBXNativeTarget "DataPersistenceUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +526,7 @@
 				8C45642E1CD9DC7100F7DF1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
