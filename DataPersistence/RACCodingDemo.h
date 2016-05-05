@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RACCodingDemo : NSObject
+@interface RACCodingDemo : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger age;

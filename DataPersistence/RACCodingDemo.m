@@ -8,9 +8,6 @@
 
 #import "RACCodingDemo.h"
 
-@interface RACCodingDemo ()<NSCoding>
-
-@end
 
 @implementation RACCodingDemo
 
@@ -22,12 +19,17 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding{
+    return YES;
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
         if (!aDecoder) {
             return self;
         }
-        _name = [aDecoder decodeObjectForKey:@"name"];
+//        _name = [aDecoder decodeObjectForKey:@"name"];
+        _name = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"name"];
         _age = [aDecoder decodeIntegerForKey:@"age"];
     }
     return self;
