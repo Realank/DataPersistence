@@ -21,56 +21,44 @@
     const char *dbpath = [databasePath UTF8String]; // Convert NSString to UTF-8
     //打开数据库文件，没有则创建
     if (sqlite3_open(dbpath, &contactDB) == SQLITE_OK) {
-        //Database opened successfully
-        NSLog(@"Database opened successfully");
+        NSLog(@"数据库打开成功");
     } else {
-        //Failed to open database
-        NSLog(@"Failed to open database");
+        NSLog(@"数据库打开失败");
     }
     
     //创建表
     snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char),"CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, ADDRESS TEXT, PHONE TEXT)");
     if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, NULL) == SQLITE_OK)
     {
-        // SQL statement execution succeeded
-        NSLog(@"SQL statement execution succeeded");
+        NSLog(@"成功创建表");
     }
 
     sqlite3_stmt *statement;
     
-    //增
+    //－－－增－－－
     snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char), "INSERT INTO CONTACTS (NAME, ADDRESS, PHONE) VALUES (\"zhang\",\"Nanjing Road\",\"18612345678\")");
     if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, NULL) == SQLITE_OK)
     {
-        // SQL statement execution succeeded
-        NSLog(@"SQL statement execution succeeded");
+        NSLog(@"成功增加一行");
     }
     
-    //删
+    //－－－删－－－
     snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char), "DELETE FROM CONTACTS WHERE NAME = \"wang\"");
-    //准备一个SQL语句，用于执行
-    sqlite3_prepare_v2(contactDB, sql_stmt, -1, &statement, NULL);
-    
-    //执行一条准备的语句,如果找到一行匹配的数据，则返回SQLITE_ROW
-    if(sqlite3_step(statement) == SQLITE_DONE){
-        NSLog(@"SQL statement execution succeeded");
+    if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, NULL) == SQLITE_OK)
+    {
+        NSLog(@"成功删除一行");
     }
-    sqlite3_finalize(statement);//在内存中，清除之前准备的语句
     
     
-    //改
-    snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char), "UPDATE CONTACTS SET NAME = \"wang\" where name = \"zhang\"");
-    //准备一个SQL语句，用于执行
-    sqlite3_prepare_v2(contactDB, sql_stmt, -1, &statement, NULL);
-    
-    //执行一条准备的语句,如果找到一行匹配的数据，则返回SQLITE_ROW
-    if(sqlite3_step(statement) == SQLITE_DONE){
-        NSLog(@"SQL statement execution succeeded");
+    //－－－改－－－
+    snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char), "UPDATE CONTACTS SET NAME = \"wang\" WHERE NAME = \"zhang\"");
+    if (sqlite3_exec(contactDB, sql_stmt, NULL, NULL, NULL) == SQLITE_OK)
+    {
+        NSLog(@"成功修改一行");
     }
-    sqlite3_finalize(statement);//在内存中，清除之前准备的语句
     
-    //查
-    snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char), "SELECT id, NAME, ADDRESS FROM contacts");
+    //－－－查－－－
+    snprintf(sql_stmt, sizeof(sql_stmt)/sizeof(char), "SELECT id, NAME, ADDRESS FROM CONTACTS");
     //准备一个SQL语句，用于执行
     sqlite3_prepare_v2(contactDB, sql_stmt, -1, &statement, NULL);
     
@@ -80,7 +68,6 @@
         NSInteger index = sqlite3_column_int(statement, 0);
         NSString *nameField = [[NSString alloc] initWithUTF8String: (const char *) sqlite3_column_text(statement, 1)];
         NSString *addressField = [[NSString alloc] initWithUTF8String: (const char *) sqlite3_column_text(statement, 2)];
-        // Code to do something with extracted data here
         NSLog(@"%ld %@ %@",(long)index,nameField,addressField);
     }
     sqlite3_finalize(statement);//在内存中，清除之前准备的语句
