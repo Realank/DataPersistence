@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "RACFileManager.h"
 #import "RACCodingDemo.h"
+#import "RACSQLiteDemo.h"
 
 @interface ViewController ()
 
@@ -19,8 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self archiveObject];
-    [self unArchiveObject];
+    [RACSQLiteDemo operation];
 }
 
 

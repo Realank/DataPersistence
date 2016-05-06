@@ -16,6 +16,8 @@
 		8C4564171CD9DC7100F7DF1A /* DataPersistenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564161CD9DC7100F7DF1A /* DataPersistenceTests.m */; };
 		8C4564221CD9DC7100F7DF1A /* DataPersistenceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564211CD9DC7100F7DF1A /* DataPersistenceUITests.m */; };
 		8C4564311CD9DD7B00F7DF1A /* RACFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */; };
+		8CA316FE1CDC414B00CA7111 /* RACSQLiteDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA316FD1CDC414B00CA7111 /* RACSQLiteDemo.m */; };
+		8CA317001CDC41A300CA7111 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA316FF1CDC41A300CA7111 /* libsqlite3.tbd */; };
 		8CE03BE81CDB18B40067DB98 /* RACCodingDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE03BE71CDB18B40067DB98 /* RACCodingDemo.m */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,9 @@
 		8C4564231CD9DC7100F7DF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C45642F1CD9DD7B00F7DF1A /* RACFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACFileManager.h; sourceTree = "<group>"; };
 		8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACFileManager.m; sourceTree = "<group>"; };
+		8CA316FC1CDC414B00CA7111 /* RACSQLiteDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACSQLiteDemo.h; sourceTree = "<group>"; };
+		8CA316FD1CDC414B00CA7111 /* RACSQLiteDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACSQLiteDemo.m; sourceTree = "<group>"; };
+		8CA316FF1CDC41A300CA7111 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8CE03BE61CDB18B40067DB98 /* RACCodingDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACCodingDemo.h; sourceTree = "<group>"; };
 		8CE03BE71CDB18B40067DB98 /* RACCodingDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACCodingDemo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA317001CDC41A300CA7111 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +121,8 @@
 				8CE03BE71CDB18B40067DB98 /* RACCodingDemo.m */,
 				8C45642F1CD9DD7B00F7DF1A /* RACFileManager.h */,
 				8C4564301CD9DD7B00F7DF1A /* RACFileManager.m */,
+				8CA316FC1CDC414B00CA7111 /* RACSQLiteDemo.h */,
+				8CA316FD1CDC414B00CA7111 /* RACSQLiteDemo.m */,
 				8C4564051CD9DC7100F7DF1A /* Main.storyboard */,
 				8C4564081CD9DC7100F7DF1A /* Assets.xcassets */,
 				8C45640A1CD9DC7100F7DF1A /* LaunchScreen.storyboard */,
@@ -127,6 +135,7 @@
 		8C4563FC1CD9DC7100F7DF1A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8CA316FF1CDC41A300CA7111 /* libsqlite3.tbd */,
 				8C4563FD1CD9DC7100F7DF1A /* main.m */,
 			);
 			name = "Supporting Files";
@@ -283,6 +292,7 @@
 				8C4564311CD9DD7B00F7DF1A /* RACFileManager.m in Sources */,
 				8C4564041CD9DC7100F7DF1A /* ViewController.m in Sources */,
 				8C4564011CD9DC7100F7DF1A /* AppDelegate.m in Sources */,
+				8CA316FE1CDC414B00CA7111 /* RACSQLiteDemo.m in Sources */,
 				8CE03BE81CDB18B40067DB98 /* RACCodingDemo.m in Sources */,
 				8C4563FE1CD9DC7100F7DF1A /* main.m in Sources */,
 			);
