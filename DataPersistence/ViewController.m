@@ -20,9 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [RACSQLiteDemo operation];
-}
+//    [RACSQLiteDemo operation];
+    
+//    NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[RACFileManager homeDirectory] error:nil]);
+//    [self fileManagement];
+//    NSString* fileName = [[RACFileManager cacheDirectory] stringByAppendingPathComponent:@"myplist.plist"];
+//    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"value",@"key", nil];
+//    [dict writeToFile:fileName atomically:YES];
+//    
+    [RACFileManager printHierachyOfSandBox];
 
+}
 
 - (void)archiveObject{
     
@@ -85,23 +93,27 @@
     
     
     NSString* content = @"hello world";
-    BOOL writeResult = [RACFileManager writeStringToFile:content inPath:filePath];
+//    BOOL writeResult = [RACFileManager writeString:content toPath:filePath];
+//    BOOL writeResult = [RACFileManager writeStringUsingFileHandle:content toPath:filePath];
+    BOOL writeResult = [RACFileManager appendStringUsingFileHandle:content toPath:filePath];
     if (writeResult) {
         NSLog(@"写入%@成功",fileName);
     }else {
         NSLog(@"写入%@失败",fileName);
     }
     
-    content = [RACFileManager readFileInPath:filePath];
+//    content = [RACFileManager readFileFromPath:filePath];
+    content = [RACFileManager readFileUsingFileHandleFromPath:filePath];
     NSLog(@"%@",content);
     
+    //删除文件
     BOOL deleteResult = [RACFileManager deleteFileInPath:filePath];
     if (deleteResult) {
         NSLog(@"删除%@成功",fileName);
     }else {
         NSLog(@"删除%@失败",fileName);
     }
-    
+    //删除文件夹
     NSString *directoryPath = [cachePath stringByAppendingPathComponent:directoryName];
     deleteResult = [RACFileManager deleteFileInPath:directoryPath];
     if (deleteResult) {

@@ -24,13 +24,26 @@
 +(BOOL)createDirectoryInPath:(NSString*)path directoryName:(NSString*)name;
 //创建文件
 +(BOOL)createFileInPath:(NSString*)path fileName:(NSString*)fileName;
-//写文件
-+(BOOL)writeStringToFile:(NSString*)string inPath:(NSString*)path;
+//覆盖写文件
++(BOOL)writeString:(NSString*)string toPath:(NSString*)path;
+//追加写文件
++(BOOL)appendStringUsingFileHandle:(NSString*)string toPath:(NSString*)path;
 //读文件
-+(NSString*)readFileInPath:(NSString*)path;
++(NSString*)readFileFromPath:(NSString*)path;
+//覆盖写文件
++(BOOL)writeStringUsingFileHandle:(NSString*)string toPath:(NSString*)path;
+//读文件
++(NSString*)readFileUsingFileHandleFromPath:(NSString*)path;
 //文件属性
 +(NSDictionary *)fileAttriutesInPath:(NSString*)path;
 //删除文件
 +(BOOL)deleteFileInPath:(NSString*)path;
-
+//保存字典到plist文件
++(BOOL)saveDict:(NSDictionary*)dict inPlistFileOfPath:(NSString*)path;
+//从plist文件读取字典
++(NSDictionary*)dictInPistFileOfPath:(NSString*)path;
+//列出当前路径下的文件／文件夹
++ (NSArray*)listForPath:(NSString*)path;
+//递归打印沙盒目录
++ (void)printHierachyOfSandBox;
 @end
