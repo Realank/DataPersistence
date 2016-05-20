@@ -21,7 +21,6 @@
 
 //获取Documents目录
 +(NSString *)documentDirectory{
-    //[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     return documentsDirectory;
 }
@@ -39,14 +38,30 @@
 
 #pragma mark - file/directory operation
 
-//文件或文件夹是否存在
+
+
+/**
+ *  文件或文件夹是否存在
+ *
+ *  @param path        文件/文件夹路径
+ *  @param isDirectory BOOL型变量的地址，用于反馈该路径是文件还是文件夹
+ *
+ *  @return 返回文件是否存在
+ */
 +(BOOL)fileExistInPath:(NSString*)path isDirectory:(nullable BOOL *)isDirectory{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL existed = [fileManager fileExistsAtPath:path isDirectory:isDirectory];
     return existed;
 }
 
-//创建文件夹
+/**
+ *  创建文件夹
+ *
+ *  @param path 要创建文件夹的上级路径
+ *  @param name 要创建的文件夹名称
+ *
+ *  @return 是否创建成功
+ */
 +(BOOL)createDirectoryInPath:(NSString*)path directoryName:(NSString*)name{
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -62,7 +77,15 @@
     }
 }
 
-//创建文件
+
+/**
+ *  创建文件
+ *
+ *  @param path     要创建文件的上级路径
+ *  @param fileName 要创建的文件名
+ *
+ *  @return 是否创建成功
+ */
 +(BOOL)createFileInPath:(NSString*)path fileName:(NSString*)fileName{
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -77,7 +100,14 @@
     }
 }
 
-//写文件
+/**
+ *  覆盖写文件
+ *
+ *  @param string 写入的内容
+ *  @param path   文件的路径
+ *
+ *  @return 是否写入成功
+ */
 +(BOOL)writeString:(NSString*)string toPath:(NSString*)path{
     
     BOOL res=[string writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -90,7 +120,13 @@
     }
 }
 
-//读文件
+/**
+ *  读文件
+ *
+ *  @param path 文件路径
+ *
+ *  @return 文件内容
+ */
 +(NSString*)readFileFromPath:(NSString*)path{
 
     NSString *content=[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
@@ -98,7 +134,14 @@
 }
 
 
-//覆盖写文件
+/**
+ *  覆盖写文件(使用NSFileHandle)
+ *
+ *  @param string 要写入的内容
+ *  @param path   文件路径
+ *
+ *  @return 是否写入成功
+ */
 +(BOOL)writeStringUsingFileHandle:(NSString*)string toPath:(NSString*)path{
     
     if (![self fileExistInPath:path isDirectory:nil]) {
@@ -118,7 +161,14 @@
     return NO;
 }
 
-//追加写文件
+/**
+ *  追加写文件(使用NSFileHandle)
+ *
+ *  @param string 追加的内容
+ *  @param path   文件路径
+ *
+ *  @return 是否追加成功
+ */
 +(BOOL)appendStringUsingFileHandle:(NSString*)string toPath:(NSString*)path{
     
     if (![self fileExistInPath:path isDirectory:nil]) {
@@ -138,7 +188,14 @@
     return NO;
 }
 
-//读文件
+
+/**
+ *  读文件(使用NSFileHandle)
+ *
+ *  @param path 文件路径
+ *
+ *  @return 文件内容
+ */
 +(NSString*)readFileUsingFileHandleFromPath:(NSString*)path{
     
     NSFileHandle* file = [NSFileHandle fileHandleForReadingAtPath:path];
@@ -150,7 +207,13 @@
     
     return nil;
 }
-//文件属性
+/**
+ *  文件属性
+ *
+ *  @param path 文件路径
+ *
+ *  @return 文件属性字典
+ */
 +(NSDictionary *)fileAttriutesInPath:(NSString*)path{
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -160,7 +223,13 @@
 
 
 
-//删除文件
+/**
+ *  删除文件
+ *
+ *  @param path 文件路径
+ *
+ *  @return 是否删除成功
+ */
 +(BOOL)deleteFileInPath:(NSString*)path{
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -176,7 +245,14 @@
 
 
 #pragma mark - plist operation
-//保存字典到plist文件
+/**
+ *  保存字典到plist文件
+ *
+ *  @param dict 要保存的字典
+ *  @param path 文件路径
+ *
+ *  @return 是否保存成功
+ */
 +(BOOL)saveDict:(NSDictionary*)dict inPlistFileOfPath:(NSString*)path{
     
     if (dict && [dict isKindOfClass:[NSDictionary class]]) {
@@ -184,7 +260,13 @@
     }
     return NO;
 }
-//从plist文件读取字典
+/**
+ *  从plist文件读取字典
+ *
+ *  @param path 文件路径
+ *
+ *  @return 读取到的字典
+ */
 +(NSDictionary*)dictInPistFileOfPath:(NSString*)path{
     if ([self fileExistInPath:path isDirectory:nil]) {
         NSDictionary* dict = [[NSDictionary alloc]initWithContentsOfFile:path];
@@ -195,18 +277,31 @@
     return nil;
 }
 
-//递归打印沙盒目录
+/**
+ *  列出某路径下的文件/文件夹
+ *
+ *  @param path 要列的路径
+ *
+ *  @return 给定路径下的文件/文件夹名称数组
+ */
 + (NSArray*)listForPath:(NSString*)path{
     return [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
 }
 
 
 #pragma mark - application
-
+/**
+ *  递归打印沙盒
+ */
 + (void)printHierachyOfSandBox{
     [self recursionPrintListOfPath:[RACFileManager homeDirectory] forLevel:0];
 }
-
+/**
+ *  递归打印某个路径下的所有文件
+ *
+ *  @param path  路径
+ *  @param level 打印的缩紧级别，从0开始
+ */
 + (void)recursionPrintListOfPath:(NSString*)path forLevel:(NSInteger)level{
     NSArray *list = [self listForPath:path];
     for (NSString* fileName in list) {

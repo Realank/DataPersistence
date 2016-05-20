@@ -10,7 +10,7 @@
 
 @interface RACFileManager : NSObject
 
-
+//获取沙盒根目录
 +(NSString*)homeDirectory;
 //获取Documents目录
 +(NSString *)documentDirectory;
@@ -42,7 +42,7 @@
 +(BOOL)saveDict:(NSDictionary*)dict inPlistFileOfPath:(NSString*)path;
 //从plist文件读取字典
 +(NSDictionary*)dictInPistFileOfPath:(NSString*)path;
-//列出当前路径下的文件／文件夹
+//列出当前路径下的文件/文件夹
 + (NSArray*)listForPath:(NSString*)path;
 //递归打印沙盒目录
 + (void)printHierachyOfSandBox;
