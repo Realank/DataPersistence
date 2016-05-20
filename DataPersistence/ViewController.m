@@ -24,11 +24,13 @@
     
 //    NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[RACFileManager homeDirectory] error:nil]);
 //    [self fileManagement];
-//    NSString* fileName = [[RACFileManager cacheDirectory] stringByAppendingPathComponent:@"myplist.plist"];
-//    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"value",@"key", nil];
+    NSString* fileName = [[RACFileManager cacheDirectory] stringByAppendingPathComponent:@"myplist.plist"];
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"value",@"key", nil];
 //    [dict writeToFile:fileName atomically:YES];
 //    
-    [RACFileManager printHierachyOfSandBox];
+//    [RACFileManager printHierachyOfSandBox];
+    [RACFileManager saveDict:dict inPlistFileOfPath:fileName];
+    NSLog(@"%@",[RACFileManager dictInPistFileOfPath:fileName]);
 
 }
 

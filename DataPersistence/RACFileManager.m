@@ -294,7 +294,7 @@
  *  递归打印沙盒
  */
 + (void)printHierachyOfSandBox{
-    [self recursionPrintListOfPath:[RACFileManager homeDirectory] forLevel:0];
+    [self recursionPrintListOfPath:[self homeDirectory] forLevel:0];
 }
 /**
  *  递归打印某个路径下的所有文件
