@@ -21,16 +21,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 //    [RACSQLiteDemo operation];
-    
+    [self archiveObject];
+    [self unArchiveObject];
 //    NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[RACFileManager homeDirectory] error:nil]);
 //    [self fileManagement];
-    NSString* fileName = [[RACFileManager cacheDirectory] stringByAppendingPathComponent:@"myplist.plist"];
-    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"value",@"key", nil];
+//    NSString* fileName = [[RACFileManager cacheDirectory] stringByAppendingPathComponent:@"myplist.plist"];
+//    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:@"value",@"key", nil];
 //    [dict writeToFile:fileName atomically:YES];
 //    
 //    [RACFileManager printHierachyOfSandBox];
-    [RACFileManager saveDict:dict inPlistFileOfPath:fileName];
-    NSLog(@"%@",[RACFileManager dictInPistFileOfPath:fileName]);
+//    [RACFileManager saveDict:dict inPlistFileOfPath:fileName];
+//    NSLog(@"%@",[RACFileManager dictInPistFileOfPath:fileName]);
 
 }
 
@@ -42,12 +43,19 @@
     NSString* fileName = @"demoObj.data";
     NSString* filePath = [cachePath stringByAppendingPathComponent:fileName];
     
-    [NSKeyedArchiver archiveRootObject:demoObj toFile:filePath];
-    NSData *objectData = [NSKeyedArchiver archivedDataWithRootObject:demoObj];
+//    [NSKeyedArchiver archiveRootObject:demoObj toFile:filePath];
     
-    //Class Object <-> NSData
-    demoObj = [NSKeyedUnarchiver unarchiveObjectWithData:objectData];
-    NSLog(@"%@ %ld",demoObj.name,(long)demoObj.age);
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver setRequiresSecureCoding:YES];
+    [archiver encodeObject:demoObj forKey:NSKeyedArchiveRootObjectKey];
+    [archiver finishEncoding];
+    
+    [data writeToFile:filePath atomically:YES];
+    
+//    NSData *objectData = [NSKeyedArchiver archivedDataWithRootObject:demoObj];
+//    demoObj = [NSKeyedUnarchiver unarchiveObjectWithData:objectData];
+//    NSLog(@"%@ %ld",demoObj.name,(long)demoObj.age);
 
 }
 
@@ -56,8 +64,15 @@
     NSString* fileName = @"demoObj.data";
     NSString* filePath = [cachePath stringByAppendingPathComponent:fileName];
     
-    RACCodingDemo *demoObj = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    NSData* archivedData = [[NSData alloc]initWithContentsOfFile:filePath];
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:archivedData];
+    [unarchiver setRequiresSecureCoding:YES];
+    RACCodingDemo *demoObj = [unarchiver decodeObjectOfClass:[RACCodingDemo class] forKey:NSKeyedArchiveRootObjectKey];
     NSLog(@"%@ %ld",demoObj.name,(long)demoObj.age);
+    
+//    RACCodingDemo *demoObj = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//    NSLog(@"%@ %ld",demoObj.name,(long)demoObj.age);
 }
 
 - (void)fileManagement{
